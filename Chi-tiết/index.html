@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Chi tiết sản phẩm</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<main class="container">
+  
+
+      <!-- Left Column / Headphones Image -->
+      <div class="left-column">
+        <img data-image="black" src="images/dong-ho-nam-mvw-ml057-01-1.-600x600.jpg" alt="">
+        <img data-image="blue" src="images/dong-ho-nam-mvw-ml064-01-1.-600x600.jpg" alt="">
+        <img data-image="red" class="active" src="images/dong-ho-nam-mvw-ml065-01-1.-600x600.jpg" alt="">
+      </div>
+
+
+      <!-- Right Column -->
+      <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+          <div class="payment-top-wrap">
+            <div class="payment-top">
+                <div class="payment-top-delivery payment-top-item">
+                   <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="payment-top-adress payment-top-item">
+                   <i class="fas fa-map-marker-alt "></i>
+                </div>
+                <div class="payment-top-payment payment-top-item">
+                   <i class="fas fa-money-check-alt"></i>
+                </div>
+            </div>
+         </div>
+          <h1>MVW watches</h1>
+          <p>Men's fashion watches MVW is a leading brand in the segment of men's fashion watches, MVW is always in the TOP best-selling products.</p>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+
+          <!-- Product Color -->
+          <div class="product-color">
+            <span>Color</span>
+
+            <div class="color-choose">
+              <div>
+                <input data-image="red" type="radio" id="red" name="color" value="silver" checked>
+                <label for="red"><span></span></label>
+              </div>
+              <div>
+                <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                <label for="blue"><span></span></label>
+              </div>
+              <div>
+                <input data-image="black" type="radio" id="black" name="color" value="black">
+                <label for="black"><span></span></label>
+              </div>
+            </div>
+
+          </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+          <span>$148</span>
+          <a href="http://127.0.0.1:5501/index.html" class="cart-btn">Add to cart</a>
+          
+        </div>
+      </div>
+</main>
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    
+<script type="text/javascript">
+   $(document).ready(function() {
+
+  $('.color-choose input').on('click', function() {
+      var headphonesColor = $(this).attr('data-image');
+
+      $('.active').removeClass('active');
+      $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+      $(this).addClass('active');
+  });
+
+});
+</script>   
+
+</body>
+</html>
