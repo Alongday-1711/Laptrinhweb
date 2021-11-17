@@ -1,0 +1,120 @@
+                       
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="style.css">
+     <title>Website - Trang thanh toán</title>
+ </head>
+ <body>
+    
+ <!-- -------------------------Payment---------------- -->
+<section class="payment">
+    <div class="container">
+        <div class="payment-top-wrap">
+            <div class="payment-top">
+                <div class="payment-top-delivery payment-top-item">
+                   <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="payment-top-adress payment-top-item">
+                   <i class="fas fa-map-marker-alt "></i>
+                </div>
+                <div class="payment-top-payment payment-top-item">
+                   <i class="fas fa-money-check-alt"></i>
+                </div>
+            </div>
+         </div>
+    </div>
+    <div class="container">
+        <div class="payment-content row">
+            <div class="payment-content-left">
+                <div class="payment-content-left-method-delivery">
+                    <p style="font-weight: bold;">Phương thức giao hàng</p>
+                    <div class="payment-content-left-method-delivery-item">
+                        <input checked type="radio">
+                        <label for="">Giao hàng chuyển phát nhanh</label>
+                    </div>
+                </div>
+                <div class="payment-content-left-method-payment">
+                    <p style="font-weight: bold;">Phương thức thanh toán</p>
+                    <p>Mọi giao dịch đều được bảo mật và mã hóa. Thông tin thẻ tín dụng sẽ không bao giờ được lưu lại.</p>
+                    <div class="payment-content-left-method-payment-item">
+                        <input name="method-payment" type="radio">
+                        <label for="">Thanh toán bằng Paypal hoặc thẻ tín dụng</label>
+                    </div>
+                    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+                    <!-- Set up a container element for the button -->
+                    <div id="paypal-button-container"></div>
+                
+                    <script>
+                      paypal.Buttons({
+                
+                        // Sets up the transaction when a payment button is clicked
+                        createOrder: function(data, actions) {
+                          return actions.order.create({
+                            purchase_units: [{
+                              amount: {
+                                value: '77.44' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                              }
+                            }]
+                          });
+                        },
+                
+                        // Finalize the transaction after payer approval
+                        onApprove: function(data, actions) {
+                          return actions.order.capture().then(function(orderData) {
+                            // Successful capture! For dev/demo purposes:
+                                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                var transaction = orderData.purchase_units[0].payments.captures[0];
+                                alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                
+                            // When ready to go live, remove the alert and show a success message within this page. For example:
+                            // var element = document.getElementById('paypal-button-container');
+                            // element.innerHTML = '';
+                            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                            // Or go to another URL:  actions.redirect('thank_you.html');
+                          });
+                        }
+                      }).render('#paypal-button-container');
+                
+                    </script>
+                    <div class="payment-content-left-method-payment-item">
+                        <input checked name="method-payment" type="radio">
+                        <label for=""> Thanh toán bằng thẻ ATM(OnePay)</label>
+                    </div>
+                    <div class="payment-content-left-method-payment-item-img">
+                        <img src="images/vcb.png" alt="">
+                    </div>
+                    <div class="payment-content-left-method-payment-item">
+                        <input name="method-payment" type="radio">
+                        <label for="">  Thanh toán Momo</label>
+                    </div>
+                    <div class="payment-content-left-method-payment-item-img">
+                        <img src="images/momo.png" alt="">
+                    </div>
+                    <div class="payment-content-left-method-payment-item">
+                        <input name="method-payment" type="radio">
+                        <label for="">  Thu tiền tận nơi</label>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</section>
+ 
+ 
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+</html>
+                      
